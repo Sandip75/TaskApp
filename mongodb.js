@@ -19,18 +19,39 @@ MongoClient.connect(
     const db = client.db(databasename);
 
     //#region  insert one data
-    db.collection("user").insertOne(
-      {
-        name: "Sandip Kumar",
-        age: 24,
-      },
+    // db.collection("user").insertOne(
+    //   {
+    //     name: "Sandip Kumar",
+    //     age: 24,
+    //   },
+    //   (error, result) => {
+    //     if (error) {
+    //       console.log("Error occure while inserting document");
+    //       return;
+    //     }
+
+    //     console.log("Document inserted .. ", result.ops);
+    //   }
+    // );
+    //#endregion
+
+    //#region Insert Many data
+    db.collection("user").insertMany(
+      [
+        {
+          name: "vicky",
+          age: 61,
+        },
+        {
+          name: "tashi",
+          age: 23,
+        },
+      ],
       (error, result) => {
         if (error) {
-          console.log("Error occure while inserting document");
-          return;
+          return console.log("Error occure while iserting data");
         }
-
-        console.log("Document inserted .. ", result.ops);
+        console.log("Data inserted ... ", result.ops);
       }
     );
     //#endregion
