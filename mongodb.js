@@ -18,7 +18,7 @@ MongoClient.connect(
     //Create Db connection
     const db = client.db(databasename);
 
-    //#region  insert one data
+    //#region  insert one document
     // db.collection("user").insertOne(
     //   {
     //     name: "Sandip Kumar",
@@ -35,23 +35,48 @@ MongoClient.connect(
     // );
     //#endregion
 
-    //#region Insert Many data
-    db.collection("user").insertMany(
+    //#region Insert Many document
+    // db.collection("user").insertMany(
+    //   [
+    //     {
+    //       name: "vicky",
+    //       age: 61,
+    //     },
+    //     {
+    //       name: "tashi",
+    //       age: 23,
+    //     },
+    //   ],
+    //   (error, result) => {
+    //     if (error) {
+    //       return console.log("Error occure while iserting data");
+    //     }
+    //     console.log("Data inserted ... ", result.ops);
+    //   }
+    // );
+    //#endregion
+
+    //#region Insert many document
+    db.collection("task").insertMany(
       [
         {
-          name: "vicky",
-          age: 61,
+          description: "Task 1111",
+          complted: true,
         },
         {
-          name: "tashi",
-          age: 23,
+          description: "Task 22222",
+          complted: false,
+        },
+        {
+          description: "Task 33333",
+          complted: true,
         },
       ],
       (error, result) => {
         if (error) {
-          return console.log("Error occure while iserting data");
+          return console.log("Error ocuure .... ", error);
         }
-        console.log("Data inserted ... ", result.ops);
+        console.log("Result ::: ", result.ops);
       }
     );
     //#endregion
