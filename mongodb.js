@@ -14,7 +14,16 @@ MongoClient.connect(
       console.log("Error occur in mongodb ", error);
       return;
     }
-    console.log("Mongodb connected ");
+    
+    //Create Db connection
+    const db = client.db(databasename);
+
+    //insert data
+    db.collection('user').insertOne({
+        name : "Sandip Kumar",
+        age : 24
+
+    });
   }
 );
 //#endregion
