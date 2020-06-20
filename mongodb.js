@@ -4,10 +4,6 @@ const { MongoClient, ObjectID } = require("mongodb");
 const connectionurl = "mongodb://127.0.0.1:27017";
 const databasename = "taskmanger";
 
-const id = new ObjectID();
-console.log("This is ID ..", id);
-console.log("This is object id time :: ", id.getTimestamp());
-
 MongoClient.connect(
   connectionurl,
   { useNewUrlParser: true },
@@ -19,20 +15,13 @@ MongoClient.connect(
     //Create Db connection
     const db = client.db(databasename);
 
-    db.collection("User").insertOne(
-      {
-        _id: id,
-        name: "Sandip Kumar",
-        age: 23,
-      },
-      (error, result) => {
-        if (error) {
-          console.log("Error occure while inserting document");
-          return;
-        }
-        console.log("Document inserted ...", result.ops);
+    db.collection('users').findOne({name : 'rahul'} , (error , user)=>{
+      if(error){
+        return console.log("Error came while finding...." , error);
       }
-    );
+      console.log("Find data ..." , user);
+    });
+
   }
 );
 //#endregion
