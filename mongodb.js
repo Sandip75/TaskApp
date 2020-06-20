@@ -15,13 +15,14 @@ MongoClient.connect(
     //Create Db connection
     const db = client.db(databasename);
 
-    db.collection('users').findOne({name : 'rahul'} , (error , user)=>{
-      if(error){
-        return console.log("Error came while finding...." , error);
-      }
-      console.log("Find data ..." , user);
-    });
-
+    db.collection("users")
+      .find({ name: "vicky" })
+      .toArray((error, users) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log(users);
+      });
   }
 );
 //#endregion
