@@ -23,6 +23,15 @@ MongoClient.connect(
         }
         console.log(users);
       });
+
+    db.collection("users")
+      .find({ name: "vicky" })
+      .count((error, users) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log(users);
+      });
   }
 );
 //#endregion
