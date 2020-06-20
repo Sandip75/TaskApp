@@ -1,10 +1,11 @@
-const mongodb = require("mongodb");
+const { MongoClient, ObjectID } = require("mongodb");
 
 //#region Connect to mongo db
-const MongoClient = mongodb.MongoClient;
-
 const connectionurl = "mongodb://127.0.0.1:27017";
 const databasename = "taskmanger";
+
+const id = new ObjectID();
+console.log("This is ID .." , id);
 
 MongoClient.connect(
   connectionurl,
