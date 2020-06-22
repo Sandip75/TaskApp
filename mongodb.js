@@ -15,23 +15,18 @@ MongoClient.connect(
     //Create Db connection
     const db = client.db(databasename);
 
-    db.collection("users")
-      .find({ name: "vicky" })
-      .toArray((error, users) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log(users);
-      });
-
-    db.collection("users")
-      .find({ name: "vicky" })
-      .count((error, users) => {
-        if (error) {
-          return console.log(error);
-        }
-        console.log(users);
-      });
+    db.collection('users').updateOne({
+      _id : new ObjectID('5eedfb99d35c7b6af6c3f9bd')
+    },{
+      $set:{
+        name : 'ram kumar'
+      }
+    }).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    })
   }
+
 );
 //#endregion
