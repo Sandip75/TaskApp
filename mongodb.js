@@ -16,14 +16,9 @@ MongoClient.connect(
     const db = client.db(databasename);
 
     db.collection("users")
-      .updateMany(
-        {},
-        {
-          $set: {
-            age: 100,
-          },
-        }
-      )
+      .deleteOne({
+        name: "vicky",
+      })
       .then((result) => {
         console.log(result);
       })
