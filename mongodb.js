@@ -16,13 +16,11 @@ MongoClient.connect(
     const db = client.db(databasename);
 
     db.collection("users")
-      .updateOne(
+      .updateMany(
+        {},
         {
-          _id: new ObjectID("5eedfb99d35c7b6af6c3f9be"),
-        },
-        {
-          $inc: {
-            age: 1,
+          $set: {
+            age: 100,
           },
         }
       )
